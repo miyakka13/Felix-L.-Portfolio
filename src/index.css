@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-navy: #0B1220;
+  --color-midnight: #101C32;
+  --color-professional: #2563EB;
+  --color-gold: #C5A46D;
+  --color-offwhite: #F8FAFC;
+  --color-slate: #64748B;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Manrope", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Runtime-switchable semantic tokens (react to .dark on <html>) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-surface: var(--surface);
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #0B1220;
+  --muted: #F8FAFC;
+  --muted-foreground: #64748B;
+  --border: #E2E8F0;
+  --accent: #2563EB;
+  --accent-foreground: #FFFFFF;
+  --gold: #C5A46D;
+  --surface: #FFFFFF;
+}
+
+.dark {
+  --background: #0B1220;
+  --foreground: #F8FAFC;
+  --muted: #101C32;
+  --muted-foreground: #94A3B8;
+  --border: #1E293B;
+  --accent: #2563EB;
+  --accent-foreground: #FFFFFF;
+  --gold: #C5A46D;
+  --surface: #1E293B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: #2563EB;
+  color: #FFFFFF;
+}
+
+:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
